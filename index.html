@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OffersHub | Modern Websites for Startups & Local Businesses in Pakistan</title>
+<meta name="description" content="OffersHub designs and builds modern, mobile-responsive, fast-loading websites for startups and local businesses in Pakistan. Chat with us on WhatsApp.">
+<meta name="theme-color" content="#FF4444">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FF4444'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' fill='white' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #FF4444;
+    --red-dark: #E03535;
+    --red-soft: #FFF1F1;
+    --white: #FFFFFF;
+    --ink: #1D1D27;
+    --muted: #5E6170;
+    --line: #EEE6E6;
+    --wa: #25D366;
+    --wa-dark: #1EB257;
+    --radius: 16px;
+    --shadow: 0 10px 30px rgba(29, 29, 39, .08);
+    --shadow-lg: 0 18px 45px rgba(255, 68, 68, .18);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    font-family: "Poppins", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 90px 0; }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 50px; }
+  .eyebrow {
+    display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--red); background: var(--red-soft);
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 14px;
+  }
+  h1, h2, h3 { line-height: 1.2; }
+  h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 700; }
+  .section-head p { color: var(--muted); margin-top: 12px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    font: inherit; font-weight: 600; font-size: 1rem; padding: 14px 28px;
+    border-radius: 999px; border: 2px solid transparent; cursor: pointer;
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+  }
+  .btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .btn:hover { transform: translateY(-3px); }
+  .btn:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 3px solid rgba(255, 68, 68, .45); outline-offset: 3px;
+  }
+  .btn-wa { background: var(--wa); color: var(--white); box-shadow: 0 10px 25px rgba(37, 211, 102, .35); }
+  .btn-wa:hover { background: var(--wa-dark); box-shadow: 0 14px 30px rgba(37, 211, 102, .45); }
+  .btn-outline { border-color: var(--red); color: var(--red); background: var(--white); }
+  .btn-outline:hover { background: var(--red); color: var(--white); }
+  .btn-red { background: var(--red); color: var(--white); box-shadow: 0 10px 25px rgba(255, 68, 68, .3); }
+  .btn-red:hover { background: var(--red-dark); }
+
+  /* Header */
+  .header {
+    position: fixed; inset: 0 0 auto 0; z-index: 100; background: rgba(255, 255, 255, .92);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    transition: box-shadow .3s ease;
+  }
+  .header.scrolled { box-shadow: 0 4px 20px rgba(0, 0, 0, .07); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.4rem; }
+  .logo-mark {
+    width: 38px; height: 38px; border-radius: 10px; background: var(--red); color: var(--white);
+    display: grid; place-items: center; font-size: 1.2rem;
+  }
+  .logo .accent { color: var(--red); }
+  .nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
+  .nav-links a { font-weight: 500; color: var(--muted); position: relative; transition: color .2s ease; }
+  .nav-links a:not(.btn)::after {
+    content: ""; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px;
+    background: var(--red); transition: width .25s ease;
+  }
+  .nav-links a:not(.btn):hover { color: var(--red); }
+  .nav-links a:not(.btn):hover::after { width: 100%; }
+  .nav-links .btn { padding: 10px 20px; font-size: .9rem; color: var(--white); }
+  .menu-toggle {
+    display: none; width: 44px; height: 44px; border: none; background: var(--red-soft);
+    border-radius: 10px; cursor: pointer; position: relative;
+  }
+  .menu-toggle span, .menu-toggle span::before, .menu-toggle span::after {
+    content: ""; position: absolute; left: 12px; width: 20px; height: 2px; background: var(--red);
+    transition: transform .3s ease, background .3s ease;
+  }
+  .menu-toggle span { top: 21px; }
+  .menu-toggle span::before { left: 0; top: -6px; }
+  .menu-toggle span::after { left: 0; top: 6px; }
+  .menu-toggle[aria-expanded="true"] span { background: transparent; }
+  .menu-toggle[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
+
+  /* Hero */
+  .hero {
+    padding: 160px 0 100px; position: relative; overflow: hidden;
+    background: radial-gradient(circle at 85% 20%, var(--red-soft) 0, transparent 45%),
+                radial-gradient(circle at 10% 90%, var(--red-soft) 0, transparent 40%);
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 50px; align-items: center; }
+  .hero h1 { font-size: clamp(2.1rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -.02em; }
+  .hero h1 .brand { color: var(--red); display: block; }
+  .hero p { font-size: 1.1rem; color: var(--muted); margin: 20px 0 32px; max-width: 520px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .hero-stats { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 44px; }
+  .hero-stats strong { display: block; font-size: 1.7rem; color: var(--red); font-weight: 700; }
+  .hero-stats small { color: var(--muted); font-size: .88rem; }
+  .hero-visual { position: relative; }
+  .browser {
+    background: var(--white); border-radius: 18px; box-shadow: 0 30px 60px rgba(29, 29, 39, .15);
+    overflow: hidden; animation: float 6s ease-in-out infinite;
+  }
+  .browser-bar { display: flex; gap: 7px; padding: 14px 16px; background: #F6F6F8; }
+  .browser-bar i { width: 11px; height: 11px; border-radius: 50%; background: #E1E1E6; }
+  .browser-bar i:first-child { background: var(--red); }
+  .browser-body { padding: 22px; display: grid; gap: 14px; }
+  .sk { border-radius: 8px; background: #F1F1F4; height: 14px; }
+  .sk.hero-block { height: 120px; background: linear-gradient(135deg, var(--red), #FF8A8A); }
+  .sk-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .sk-row .sk { height: 70px; }
+  .w60 { width: 60%; } .w40 { width: 40%; }
+  .badge-float {
+    position: absolute; background: var(--white); border-radius: 14px; box-shadow: var(--shadow);
+    padding: 12px 16px; display: flex; align-items: center; gap: 10px; font-size: .85rem; font-weight: 600;
+  }
+  .badge-float .dot { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--red-soft); color: var(--red); }
+  .badge-float .dot svg { width: 18px; height: 18px; }
+  .badge-1 { left: -24px; bottom: 30px; }
+  .badge-2 { right: -14px; top: -18px; }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+  /* About */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-card {
+    background: var(--red); color: var(--white); border-radius: 24px; padding: 44px;
+    position: relative; overflow: hidden;
+  }
+  .about-card::after {
+    content: ""; position: absolute; width: 220px; height: 220px; border-radius: 50%;
+    background: rgba(255, 255, 255, .1); right: -60px; bottom: -60px;
+  }
+  .about-card h3 { font-size: 1.6rem; margin-bottom: 10px; }
+  .about-card p { opacity: .92; }
+  .about-text h2 { margin-bottom: 18px; }
+  .about-text p { color: var(--muted); font-size: 1.05rem; }
+
+  /* Services */
+  .services { background: #FCFAFA; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .card {
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 32px 26px; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: transparent; }
+  .icon {
+    width: 58px; height: 58px; border-radius: 14px; display: grid; place-items: center;
+    background: var(--red-soft); color: var(--red); margin-bottom: 20px;
+    transition: background .3s ease, color .3s ease, transform .3s ease;
+  }
+  .icon svg { width: 28px; height: 28px; }
+  .card:hover .icon { background: var(--red); color: var(--white); transform: rotate(-6deg) scale(1.05); }
+  .card h3 { font-size: 1.15rem; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: .95rem; }
+
+  /* Portfolio */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .project {
+    border-radius: var(--radius); overflow: hidden; background: var(--white); border: 1px solid var(--line);
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .project:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .thumb { aspect-ratio: 16 / 10; position: relative; overflow: hidden; padding: 18px; }
+  .thumb .mock {
+    height: 100%; background: rgba(255, 255, 255, .92); border-radius: 10px; padding: 12px;
+    display: grid; grid-template-rows: auto 1fr auto; gap: 8px;
+    transition: transform .45s ease;
+  }
+  .project:hover .mock { transform: scale(1.05); }
+  .mock .bar { display: flex; justify-content: space-between; align-items: center; }
+  .mock .bar b { width: 34%; height: 8px; border-radius: 4px; background: currentColor; opacity: .85; }
+  .mock .bar em { width: 26%; height: 6px; border-radius: 4px; background: #DADADF; }
+  .mock .banner { border-radius: 6px; background: currentColor; opacity: .18; }
+  .mock .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .mock .tiles i { height: 22px; border-radius: 4px; background: #ECECEF; }
+  .overlay {
+    position: absolute; inset: 0; background: rgba(255, 68, 68, .9); color: var(--white);
+    display: grid; place-items: center; opacity: 0; transition: opacity .3s ease; font-weight: 600;
+  }
+  .project:hover .overlay, .project:focus-within .overlay { opacity: 1; }
+  .overlay a { border: 2px solid var(--white); padding: 9px 20px; border-radius: 999px; transition: background .2s ease, color .2s ease; }
+  .overlay a:hover { background: var(--white); color: var(--red); }
+  .project-info { padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .project-info h3 { font-size: 1.02rem; }
+  .project-info span { font-size: .78rem; font-weight: 600; color: var(--red); background: var(--red-soft); padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+  .t1 { background: linear-gradient(135deg, #FF4444, #FF8A65); color: #FF4444; }
+  .t2 { background: linear-gradient(135deg, #2D3142, #4F5D75); color: #2D3142; }
+  .t3 { background: linear-gradient(135deg, #00A86B, #7BD389); color: #00A86B; }
+  .t4 { background: linear-gradient(135deg, #6C63FF, #A29BFE); color: #6C63FF; }
+  .t5 { background: linear-gradient(135deg, #F7B32B, #FFD166); color: #D68A00; }
+  .t6 { background: linear-gradient(135deg, #0F9AD6, #6DD3F5); color: #0F9AD6; }
+
+  /* Why */
+  .why { background: var(--red); color: var(--white); position: relative; overflow: hidden; }
+  .why .eyebrow { background: rgba(255, 255, 255, .18); color: var(--white); }
+  .why .section-head p { color: rgba(255, 255, 255, .88); }
+  .benefit {
+    background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: var(--radius); padding: 34px 28px; text-align: center;
+    transition: transform .3s ease, background .3s ease;
+  }
+  .benefit:hover { transform: translateY(-8px); background: rgba(255, 255, 255, .18); }
+  .benefit .icon { background: var(--white); color: var(--red); margin: 0 auto 20px; width: 66px; height: 66px; border-radius: 50%; }
+  .benefit:hover .icon { transform: scale(1.1); background: var(--white); color: var(--red); }
+  .benefit h3 { font-size: 1.2rem; margin-bottom: 8px; }
+  .benefit p { color: rgba(255, 255, 255, .9); font-size: .95rem; }
+
+  /* Contact */
+  .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 50px; align-items: start; }
+  .contact-info h2 { margin-bottom: 14px; }
+  .contact-info > p { color: var(--muted); margin-bottom: 28px; }
+  .info-item {
+    display: flex; gap: 16px; align-items: center; padding: 18px; border: 1px solid var(--line);
+    border-radius: 14px; margin-bottom: 14px; transition: border-color .25s ease, transform .25s ease;
+  }
+  a.info-item:hover { border-color: var(--red); transform: translateX(6px); }
+  .info-item .icon { margin: 0; width: 48px; height: 48px; flex-shrink: 0; }
+  .info-item .icon svg { width: 24px; height: 24px; }
+  .info-item small { display: block; color: var(--muted); font-size: .82rem; }
+  .info-item strong { font-weight: 600; word-break: break-word; }
+  .form {
+    background: var(--white); border-radius: 22px; padding: 36px; box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field { margin-bottom: 18px; }
+  .field label { display: block; font-weight: 500; font-size: .9rem; margin-bottom: 6px; }
+  .field input, .field textarea, .field select {
+    width: 100%; font: inherit; font-size: 1rem; padding: 13px 15px; border: 1.5px solid var(--line);
+    border-radius: 12px; background: #FDFCFC; color: var(--ink); transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  .field textarea { resize: vertical; min-height: 120px; }
+  .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 4px rgba(255, 68, 68, .12); }
+  .field.invalid input, .field.invalid textarea { border-color: var(--red); background: var(--red-soft); }
+  .error { display: none; color: var(--red-dark); font-size: .8rem; margin-top: 5px; }
+  .field.invalid .error { display: block; }
+  .form .btn { width: 100%; }
+  .form-note { text-align: center; color: var(--muted); font-size: .82rem; margin-top: 12px; }
+  .form-status { display: none; margin-top: 14px; padding: 12px 14px; border-radius: 10px; background: #E9FBF0; color: #137A3F; font-size: .9rem; text-align: center; }
+  .form-status.show { display: block; }
+
+  /* Footer */
+  .footer { background: var(--ink); color: rgba(255, 255, 255, .78); padding: 50px 0 30px; }
+  .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; padding-bottom: 28px; border-bottom: 1px solid rgba(255, 255, 255, .12); }
+  .footer .logo { color: var(--white); }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 22px; list-style: none; }
+  .footer-links a { transition: color .2s ease; }
+  .footer-links a:hover { color: var(--red); }
+  .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 24px; font-size: .9rem; }
+  .footer-bottom a { color: var(--white); font-weight: 500; transition: color .2s ease; }
+  .footer-bottom a:hover { color: var(--red); }
+
+  /* Floating WhatsApp */
+  .wa-float {
+    position: fixed; right: 22px; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); z-index: 200; width: 60px; height: 60px; border-radius: 50%;
+    background: var(--wa); color: var(--white); display: grid; place-items: center;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, .45); transition: transform .25s ease, background .25s ease;
+  }
+  .wa-float svg { width: 32px; height: 32px; }
+  .wa-float:hover { transform: scale(1.1); background: var(--wa-dark); }
+  .wa-float::before {
+    content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--wa);
+    z-index: -1; animation: pulse 2.2s ease-out infinite;
+  }
+  .wa-tip {
+    position: absolute; right: 72px; white-space: nowrap; background: var(--ink); color: var(--white);
+    font-size: .82rem; padding: 7px 12px; border-radius: 8px; opacity: 0; transform: translateX(8px);
+    pointer-events: none; transition: opacity .25s ease, transform .25s ease;
+  }
+  .wa-float:hover .wa-tip { opacity: 1; transform: translateX(0); }
+  @keyframes pulse { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.7); opacity: 0; } }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .no-js .reveal { opacity: 1; transform: none; }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .hero { padding: 130px 0 80px; text-align: center; }
+    .hero p { margin-left: auto; margin-right: auto; }
+    .hero-actions, .hero-stats { justify-content: center; }
+    .hero-visual { max-width: 480px; margin: 20px auto 0; width: 100%; }
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 820px) {
+    .menu-toggle { display: block; }
+    .nav-links {
+      position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; gap: 0;
+      background: var(--white); box-shadow: 0 12px 24px rgba(0, 0, 0, .08); padding: 10px 20px 20px;
+      max-height: 0; overflow: hidden; visibility: hidden; padding-top: 0; padding-bottom: 0;
+      transition: max-height .35s ease, padding .35s ease, visibility .35s;
+    }
+    .nav-links.open { max-height: 420px; visibility: visible; padding-top: 10px; padding-bottom: 20px; }
+    .nav-links li { width: 100%; }
+    .nav-links a:not(.btn) { display: block; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .nav-links a:not(.btn)::after { display: none; }
+    .nav-links .btn { width: 100%; margin-top: 14px; padding: 13px 20px; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 70px 0; }
+    .grid-4, .grid-3 { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .form { padding: 24px 20px; }
+    .about-card { padding: 32px 26px; }
+    .hero-actions .btn { width: 100%; }
+    .hero-stats { gap: 22px; }
+    .badge-1 { left: -6px; bottom: 14px; }
+    .badge-2 { right: -6px; top: -14px; }
+    .badge-float { font-size: .75rem; padding: 9px 12px; }
+    .footer-top, .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .footer { padding-bottom: 100px; }
+    .wa-float { right: 16px; width: 56px; height: 56px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body class="no-js">
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="container nav">
+    <a href="#home" class="logo" aria-label="OffersHub home">
+      <span class="logo-mark" aria-hidden="true">O</span><span>Offers<span class="accent">Hub</span></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://wa.me/923192200802?text=Hi%20OffersHub%2C%20I%27d%20like%20a%20website%20for%20my%20business." class="btn btn-wa" target="_blank" rel="noopener">WhatsApp Us</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">Web Design Agency · Pakistan</span>
+        <h1><span class="brand">OffersHub:</span> Modern Websites for Your Business</h1>
+        <p>We design and develop fast, mobile-friendly websites that help startups and local businesses across Pakistan win more customers online.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/923192200802?text=Hi%20OffersHub%2C%20I%27d%20like%20a%20website%20for%20my%20business." class="btn btn-wa" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.04c0-5.22 4.25-9.46 9.48-9.46 2.53 0 4.9.99 6.69 2.78a9.4 9.4 0 0 1 2.77 6.69c0 5.22-4.25 9.47-9.46 9.47m8.05-17.52A11.32 11.32 0 0 0 12.04.65C5.77.65.66 5.75.66 12.03c0 2 .52 3.96 1.52 5.69L.57 23.6l6.02-1.58a11.36 11.36 0 0 0 5.44 1.39h.01c6.27 0 11.38-5.1 11.38-11.38 0-3.04-1.18-5.9-3.33-8.05"/></svg>
+            Chat on WhatsApp
+          </a>
+          <a href="#portfolio" class="btn btn-outline">View Our Work</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>100%</strong><small>Mobile Responsive</small></div>
+          <div><strong>&lt;3s</strong><small>Load Time Target</small></div>
+          <div><strong>24/7</strong><small>WhatsApp Support</small></div>
+        </div>
+      </div>
+      <div class="hero-visual reveal" aria-hidden="true">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i></div>
+          <div class="browser-body">
+            <div class="sk w40"></div>
+            <div class="sk hero-block"></div>
+            <div class="sk w60"></div>
+            <div class="sk-row"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+          </div>
+        </div>
+        <div class="badge-float badge-1">
+          <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Launch-ready design
+        </div>
+        <div class="badge-float badge-2">
+          <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+          Super fast
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="about-card reveal">
+        <h3>Your growth partner online</h3>
+        <p>From your first website to a full online presence, we handle design, development and launch, so you can focus on running your business.</p>
+      </div>
+      <div class="about-text reveal">
+        <span class="eyebrow">About OffersHub</span>
+        <h2>Websites built for Pakistani businesses</h2>
+        <p>OffersHub is a web design agency that creates modern, professional websites for startups and local businesses across Pakistan. We combine clean design with fast, mobile-friendly development so your customers can find and trust you online. Every project is built to be affordable, easy to manage and ready to grow with your business.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Our Services</span>
+        <h2>Everything your website needs</h2>
+        <p>We take care of the details, from first sketch to launch day.</p>
+      </div>
+      <div class="grid-4">
+        <article class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+          <h3>Website Design</h3>
+          <p>Custom, modern layouts that reflect your brand and turn visitors into customers.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+          <h3>Mobile Responsive</h3>
+          <p>Your site looks and works perfectly on phones, tablets and desktops.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <h3>Fast Loading</h3>
+          <p>Optimised code and images so pages open quickly, even on mobile data.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+          <h3>Easy to Manage</h3>
+          <p>Simple tools to update text, photos and offers yourself, no coding needed.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Portfolio</span>
+        <h2>Sample websites we design</h2>
+        <p>A preview of the kinds of sites we build for businesses like yours.</p>
+      </div>
+      <div class="grid-3" id="portfolioGrid"></div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Why Choose Us</span>
+        <h2>Why businesses choose OffersHub</h2>
+        <p>Simple process, honest pricing and support when you need it.</p>
+      </div>
+      <div class="grid-3">
+        <div class="benefit reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3>Affordable Pricing</h3>
+          <p>Packages designed for startup and small-business budgets, with no hidden costs.</p>
+        </div>
+        <div class="benefit reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h3>Quick Delivery</h3>
+          <p>A clear timeline from day one, so your website goes live when you need it.</p>
+        </div>
+        <div class="benefit reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <h3>Ongoing Support</h3>
+          <p>Reach us directly on WhatsApp for updates, questions and help after launch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info reveal">
+        <span class="eyebrow">Contact</span>
+        <h2>Let's build your website</h2>
+        <p>Tell us about your business and we'll reply on WhatsApp with ideas and a quote.</p>
+        <a href="https://wa.me/923192200802" class="info-item" target="_blank" rel="noopener">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.04c0-5.22 4.25-9.46 9.48-9.46 2.53 0 4.9.99 6.69 2.78a9.4 9.4 0 0 1 2.77 6.69c0 5.22-4.25 9.47-9.46 9.47m8.05-17.52A11.32 11.32 0 0 0 12.04.65C5.77.65.66 5.75.66 12.03c0 2 .52 3.96 1.52 5.69L.57 23.6l6.02-1.58a11.36 11.36 0 0 0 5.44 1.39h.01c6.27 0 11.38-5.1 11.38-11.38 0-3.04-1.18-5.9-3.33-8.05"/></svg></span>
+          <span><small>WhatsApp</small><strong>0319 2200802</strong></span>
+        </a>
+        <div class="info-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+          <span><small>Website</small><strong>Ooffershub.com</strong></span>
+        </div>
+        <div class="info-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span><small>Serving</small><strong>Businesses across Pakistan</strong></span>
+        </div>
+      </div>
+
+      <form class="form reveal" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="Ali Khan" required>
+            <span class="error">Please enter your name.</span>
+          </div>
+          <div class="field">
+            <label for="phone">Phone / WhatsApp</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="03XX XXXXXXX" required>
+            <span class="error">Please enter a valid phone number.</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="business">Business Name <small style="color:var(--muted)">(optional)</small></label>
+          <input type="text" id="business" name="business" autocomplete="organization" placeholder="Your business">
+        </div>
+        <div class="field">
+          <label for="service">What do you need?</label>
+          <select id="service" name="service">
+            <option>New Website Design</option>
+            <option>Website Redesign</option>
+            <option>Online Store</option>
+            <option>Landing Page</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us a little about your project..." required></textarea>
+          <span class="error">Please write a short message.</span>
+        </div>
+        <button type="submit" class="btn btn-red">Send Message via WhatsApp</button>
+        <p class="form-note">Your message opens in WhatsApp, ready to send to OffersHub.</p>
+        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <a href="#home" class="logo"><span class="logo-mark" aria-hidden="true">O</span><span>Offers<span class="accent">Hub</span></span></a>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year">2026</span> OffersHub. All rights reserved.</p>
+      <p><a href="https://ooffershub.com" target="_blank" rel="noopener">Ooffershub.com</a></p>
+      <p>WhatsApp: <a href="https://wa.me/923192200802" target="_blank" rel="noopener">0319 2200802</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/923192200802?text=Hi%20OffersHub%2C%20I%27d%20like%20a%20website%20for%20my%20business." class="wa-float" target="_blank" rel="noopener" aria-label="Chat with OffersHub on WhatsApp">
+  <span class="wa-tip">Chat with us</span>
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.04c0-5.22 4.25-9.46 9.48-9.46 2.53 0 4.9.99 6.69 2.78a9.4 9.4 0 0 1 2.77 6.69c0 5.22-4.25 9.47-9.46 9.47m8.05-17.52A11.32 11.32 0 0 0 12.04.65C5.77.65.66 5.75.66 12.03c0 2 .52 3.96 1.52 5.69L.57 23.6l6.02-1.58a11.36 11.36 0 0 0 5.44 1.39h.01c6.27 0 11.38-5.1 11.38-11.38 0-3.04-1.18-5.9-3.33-8.05"/></svg>
+</a>
+
+<script>
+  (function () {
+    var WA_NUMBER = "923192200802";
+    document.body.classList.remove("no-js");
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Header shadow on scroll
+    var header = document.getElementById("header");
+    function onScroll() { header.classList.toggle("scrolled", window.scrollY > 10); }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    // Mobile menu
+    var toggle = document.getElementById("menuToggle");
+    var navLinks = document.getElementById("navLinks");
+    function setMenu(open) {
+      navLinks.classList.toggle("open", open);
+      toggle.setAttribute("aria-expanded", open);
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    }
+    toggle.addEventListener("click", function () { setMenu(!navLinks.classList.contains("open")); });
+    navLinks.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+    window.addEventListener("resize", function () { if (window.innerWidth > 820) setMenu(false); });
+
+    // Portfolio placeholders
+    var projects = [
+      { name: "Spice Route Restaurant", tag: "Restaurant", theme: "t1" },
+      { name: "UrbanFit Gym", tag: "Fitness", theme: "t2" },
+      { name: "GreenLeaf Pharmacy", tag: "Healthcare", theme: "t3" },
+      { name: "PixelEdge Startup", tag: "Tech Startup", theme: "t4" },
+      { name: "Noor Boutique", tag: "Fashion Store", theme: "t5" },
+      { name: "BlueWave Real Estate", tag: "Real Estate", theme: "t6" }
+    ];
+    var grid = document.getElementById("portfolioGrid");
+    grid.innerHTML = projects.map(function (p) {
+      var text = encodeURIComponent("Hi OffersHub, I'd like a website similar to your \"" + p.name + "\" sample.");
+      return '<article class="project reveal">' +
+        '<div class="thumb ' + p.theme + '">' +
+          '<div class="mock" aria-hidden="true"><div class="bar"><b></b><em></em></div><div class="banner"></div><div class="tiles"><i></i><i></i><i></i></div></div>' +
+          '<div class="overlay"><a href="https://wa.me/' + WA_NUMBER + '?text=' + text + '" target="_blank" rel="noopener">Get a site like this</a></div>' +
+        '</div>' +
+        '<div class="project-info"><h3>' + p.name + '</h3><span>' + p.tag + '</span></div>' +
+      '</article>';
+    }).join("");
+
+    // Reveal on scroll
+    var revealEls = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { entry.target.classList.add("visible"); io.unobserve(entry.target); }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      revealEls.forEach(function (el) { io.observe(el); });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add("visible"); });
+    }
+
+    // Contact form -> WhatsApp
+    var form = document.getElementById("contactForm");
+    var status = document.getElementById("formStatus");
+    function validate(id, test) {
+      var input = document.getElementById(id);
+      var ok = test(input.value.trim());
+      input.closest(".field").classList.toggle("invalid", !ok);
+      input.setAttribute("aria-invalid", !ok);
+      return ok;
+    }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var okName = validate("name", function (v) { return v.length >= 2; });
+      var okPhone = validate("phone", function (v) { return /^[+\d][\d\s-]{9,15}$/.test(v); });
+      var okMsg = validate("message", function (v) { return v.length >= 5; });
+      if (!(okName && okPhone && okMsg)) {
+        var firstBad = form.querySelector(".field.invalid input, .field.invalid textarea");
+        if (firstBad) firstBad.focus();
+        return;
+      }
+      var d = new FormData(form);
+      var msg = "Hi OffersHub!\n\n" +
+        "Name: " + d.get("name").trim() + "\n" +
+        "Phone: " + d.get("phone").trim() + "\n" +
+        (d.get("business").trim() ? "Business: " + d.get("business").trim() + "\n" : "") +
+        "Service: " + d.get("service") + "\n\n" +
+        d.get("message").trim();
+      window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+      status.textContent = "WhatsApp opened with your message. Just tap Send to reach OffersHub.";
+      status.classList.add("show");
+      form.reset();
+    });
+    form.addEventListener("input", function (e) {
+      var field = e.target.closest(".field");
+      if (field && field.classList.contains("invalid")) {
+        field.classList.remove("invalid");
+        e.target.removeAttribute("aria-invalid");
+      }
+    });
+  })();
+</script>
+</body>
+</html>
